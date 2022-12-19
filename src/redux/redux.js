@@ -1,4 +1,5 @@
 import {createSlice,createAsyncThunk, configureStore, } from "@reduxjs/toolkit";
+import { fetchUsersAPI } from "../api/api";
 
 // initial state for app
 const initState = {
@@ -11,7 +12,7 @@ const initState = {
 // async thunk action having status pending,fullfilled and rejected
 export const fetchUsers = createAsyncThunk('fetch/users',
     async () => {
-        const res = await fetch('https://api.github.com/users');    // request pending
+        const res = await fetchUsersAPI()  // request pending
         if (res.status === 200) {
             return res.json();  // request fullfilled
         } else {

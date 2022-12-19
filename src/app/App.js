@@ -1,7 +1,7 @@
-import './App.css';
+import '../styles/App.css';
 import { Provider, useDispatch, useSelector } from 'react-redux';
-import { store } from './redux';
-import {incr,decr,reset,fetchUsers}  from './redux';
+import { store } from '../redux/redux';  // Store
+import {incr,decr,reset,fetchUsers}  from '../redux/redux';  // Actions
 
 function Home() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function Home() {
     <button onClick={()=>dispatch(reset())}>Clear</button>
 
     { data?
-      data.map(item=><div>{item?.login}</div>)
+      data.map((item,index)=><div key={index}>{item?.login}</div>)
       :null
     }
     </div>
